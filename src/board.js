@@ -1,5 +1,5 @@
 export const GameBoard = (function() {
-	const board = Array(9).fill("");
+	let board = Array(9).fill("");
 	const winConditions = [
 		[0, 1, 2],
 		[3, 4, 5],
@@ -15,7 +15,9 @@ export const GameBoard = (function() {
 		return board[position] == "";
 	}
 
-	const getBoard = () => board;
+	const clearBoard = () => board = Array(9).fill("");
+
+	const getMarkAtPosition = (position) => board[position];
 
 	const placeMark = (position, mark) => board[position] = mark;
 
@@ -34,8 +36,9 @@ export const GameBoard = (function() {
 	return {
 		placeMark,
 		isBoardFull,
-		getBoard,
+		getMarkAtPosition,
 		positionValid,
-		checkWin
+		checkWin,
+		clearBoard
 	};  
 })();

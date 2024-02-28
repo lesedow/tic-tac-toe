@@ -29,16 +29,26 @@ export const GameModule = (function() {
 		firstPlayerTurn = !firstPlayerTurn;
 	}
 
+	const restart = () => {
+		firstPlayerTurn = true;
+		status = '';
+		gameEnded = false;
+		GameBoard.clearBoard();
+	}
+
 	const placeCurrentPlayerMark = (position) => {
+
+		if (gameEnded) return;
+
 		let currentPlayer = getCurrentPlayer();
 		if (GameBoard.positionValid(position))
 		{
 			GameBoard.placeMark(position, currentPlayer.getMark());
 			checkForGameOver();
 			changeTurn();
-		}
 
-		return GameBoard.getBoard();
+			return GameBoard.getMarkAtPosition(position);
+		}
 	}
 
 	const initializeGame = (player1 = "Player 1", player2 = "Player 2") => {
@@ -48,11 +58,12 @@ export const GameModule = (function() {
 
 	const getCurrentPlayer = () => firstPlayerTurn ? firstPlayer : secondPlayer; 
 
-	initializeGame();
-
 	return {
 		placeCurrentPlayerMark,
 		hasGameEnded,
-		getStatus
+		getStatus,
+		getCurrentPlayer,
+		initializeGame,
+		restart
 	}
 })();

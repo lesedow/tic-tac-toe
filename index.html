@@ -8,6 +8,25 @@
 	<script type="module" src="./src/index.js" defer></script>
 </head>
 <body>
-	<h1>Tic tac toe</h1>
+	<div class="menu">
+		<h1 class="title">Tic Tac Toe</h1>
+		<form id="name-form" action="#">
+			<input id="name-input" type="text" placeholder="Enter Player 1 Name" maxlength="16">
+		</form>
+	</div>
+	<div class="game">
+		<h1 id="current-player-turn"></h1>
+		<div class="board">
+			<div class="cell" data-position="0"></div>
+			<div class="cell" data-position="1"></div>
+			<div class="cell" data-position="2"></div>
+			<div class="cell" data-position="3"></div>
+			<div class="cell" data-position="4"></div>
+			<div class="cell" data-position="5"></div>
+			<div class="cell" data-position="6"></div>
+			<div class="cell" data-position="7"></div>
+			<div class="cell" data-position="8"></div>
+		</div> 	
+	</div>
 </body>
 </html>
